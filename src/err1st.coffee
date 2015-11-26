@@ -29,7 +29,9 @@ Err1st = (phrase, params...) ->
 
   if phrase instanceof Error
     if phrase.stack
-      Object.defineProperty this, 'stack', value: phrase.stack
+      Object.defineProperty this, 'stack',
+        value: phrase.stack
+        writable: true
     else
       Error.captureStackTrace(this, arguments.callee)
 
